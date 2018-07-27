@@ -13,9 +13,10 @@ class Header extends React.Component {
     }
     inputChange = function(event) {
         // console.log(event.target.value);
-        this.setState({
-            keywords: event.target.value
-        })
+        // this.setState({
+        //     keywords: event.target.value
+        // })
+        this.props.filterNews(event.target.value);
     }
     render() {
         //inline styles object.. 

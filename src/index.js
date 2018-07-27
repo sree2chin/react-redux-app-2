@@ -20,14 +20,25 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            news: JSON
+            news: JSON,
+            filtered: JSON
         }
     }
+    filterNews(keyword) {
+        // console.log("keyword: ", keyword);
+        var filteredList = this.state.news.filter((item)=>{
+            return item.title.toLowerCase().includes(keyword.trim().toLowerCase());
+        })
+        this.setState({
+            filtered: filteredList
+        })
+    }
+
     render(){
         return(
             <div>
-                <Header/>
-                <NewsList news = {this.state.news}/>
+                <Header filterNews = {this.filterNews.bind(this)}/>
+                <NewsList news = {this.state.filtered}/>
             </div>
         )
     }
